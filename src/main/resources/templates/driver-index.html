@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html   lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{0-template.html}">
+<body>
+
+<div layout:fragment="content">
+    <p>Here are all the drivers:</p>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Vehicles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="driver :${driverList}">
+                <th scope="row" th:text="${driver.name}"></th>
+                <td>
+                    <th:block th:each="vehicle, iterStat : ${driver.vehicles}">
+                        <a th:href="@{'/vehicles/view/' + ${vehicle.id}}">
+                            <th:block th:text="${vehicle.registration}"></th:block>
+                            (<th:block th:text="${vehicle.getType()}"></th:block>)
+                        </a>
+                        <th:block th:if="!${iterStat.last}">, </th:block>
+                    </th:block>
+                    <th:block th:if="${driver.vehicles.size() == 0}">
+                        ---
+                    </th:block>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
