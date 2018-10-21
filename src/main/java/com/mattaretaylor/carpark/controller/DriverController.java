@@ -1,4 +1,4 @@
-package com.mattaretaylor.carpark.web;
+package com.mattaretaylor.carpark.controller;
 
 import com.mattaretaylor.carpark.model.Driver;
 import com.mattaretaylor.carpark.service.DriverService;
@@ -21,7 +21,7 @@ public class DriverController {
         model.addAttribute("driverList", service.findAll());
 
         model.addAttribute("pageTitle", "Goat Carpark - Drivers");
-        return "driver-index";
+        return "driver/index";
     }
 
 
@@ -32,7 +32,7 @@ public class DriverController {
         model.addAttribute("vehicle", d);
 
         model.addAttribute("pageTitle", "Goat Carpark - " +d.getName());
-        return "driver-view";
+        return "driver/view";
     }
 
 }

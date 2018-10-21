@@ -1,6 +1,7 @@
 package com.mattaretaylor.carpark.service;
 
 import com.mattaretaylor.carpark.model.Driver;
+import com.mattaretaylor.carpark.repository.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

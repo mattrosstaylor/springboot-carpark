@@ -1,4 +1,4 @@
-package com.mattaretaylor.carpark.web;
+package com.mattaretaylor.carpark.controller;
 
 import com.mattaretaylor.carpark.model.Vehicle;
 import com.mattaretaylor.carpark.service.VehicleService;
@@ -20,7 +20,7 @@ public class VehicleController {
         model.addAttribute("vehicleList", service.findAll());
 
         model.addAttribute("pageTitle", "Goat Carpark - Vehicles");
-        return "vehicle-index";
+        return "vehicle/index";
     }
 
     @RequestMapping("/view/{id}")
@@ -30,6 +30,6 @@ public class VehicleController {
         model.addAttribute("vehicle", v);
 
         model.addAttribute("pageTitle", "Goat Carpark - " +v.getRegistration());
-        return "driver-view";
+        return "vehicle/view";
     }
 }
