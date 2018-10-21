@@ -9,7 +9,7 @@ public class MainPageController {
 
     @RequestMapping("/")
     public String index(Model model){
-        model.addAttribute("pageTitle", "Goat Carpark - Home");
+        model.addAttribute("pageTitle", "Home");
         return "index";
     }
 }

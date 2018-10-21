@@ -7,7 +7,6 @@
 <body>
 
 <div layout:fragment="content">
-    <p>Here are all the vehicles:</p>
     <table class="table table-striped" th:object="${vehicleList}">
         <thead class="thead-dark">
             <tr>
@@ -18,7 +17,9 @@
         </thead>
         <tbody>
             <tr th:each="vehicle :${vehicleList}">
-                <th scope="row" th:text="${vehicle.registration}"></th>
+                <th scope="row">
+                    <a th:href="@{'/vehicles/view/' + ${vehicle.id}}" th:text="${vehicle.registration}"></a>
+                </th>
                 <td th:text="${vehicle.getType()}"></td>
                 <td>
                     <th:block th:each="driver, iterStat : ${vehicle.drivers}">
@@ -28,7 +29,7 @@
                         <th:block th:if="!${iterStat.last}">, </th:block>
                     </th:block>
                     <th:block th:if="${vehicle.drivers.size() == 0}">
-                        ---
+                        None registered.
                     </th:block>
                 </td>
             </tr>

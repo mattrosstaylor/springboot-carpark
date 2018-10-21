@@ -19,7 +19,7 @@ public class VehicleController {
     public String index(Model model){
         model.addAttribute("vehicleList", service.findAll());
 
-        model.addAttribute("pageTitle", "Goat Carpark - Vehicles");
+        model.addAttribute("pageTitle", "Registered Vehicles");
         return "vehicle/index";
     }
 
@@ -29,7 +29,7 @@ public class VehicleController {
         Vehicle v = service.findById(id);
         model.addAttribute("vehicle", v);
 
-        model.addAttribute("pageTitle", "Goat Carpark - " +v.getRegistration());
+        model.addAttribute("pageTitle", v.getType() +": "+v.getRegistration());
         return "vehicle/view";
     }
 }

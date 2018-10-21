@@ -3,6 +3,7 @@ package com.mattaretaylor.carpark.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -14,6 +15,9 @@ public class Driver {
     private Long id;
 
     private String name;
+    private String phoneNumber;
+    private String address;
+    private Date dateOfBirth;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

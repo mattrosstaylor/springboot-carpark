@@ -1,12 +1,38 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{template.html}">
+<html   lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{template.html}">
 <body>
 
 <div layout:fragment="content">
-    <p>Placeholder</p>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">Model</th>
+                <td th:text="${vehicle.model}"></td>
+            </tr>
+            <tr>
+                <th scope="row">Colour</th>
+                <td th:text="${vehicle.colour}"></td>
+            </tr>
+            <tr>
+                <th scope="row">Drivers</th>
+                <td>
+                    <th:block th:each="driver, iterStat : ${vehicle.drivers}">
+                        <a th:href="@{'/drivers/view/' + ${driver.id}}">
+                            <th:block th:text="${driver.name}"></th:block>
+                        </a>
+                        <th:block th:if="!${iterStat.last}">, </th:block>
+                    </th:block>
+                    <th:block th:if="${vehicle.drivers.size() == 0}">
+                        None registered.
+                    </th:block>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 </body>

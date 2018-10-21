@@ -20,18 +20,17 @@ public class DriverController {
     public String index(Model model){
         model.addAttribute("driverList", service.findAll());
 
-        model.addAttribute("pageTitle", "Goat Carpark - Drivers");
+        model.addAttribute("pageTitle", "Registered Drivers");
         return "driver/index";
     }
-
 
     @RequestMapping("/view/{id}")
     public String viewById(Model model, @PathVariable Long id) {
 
         Driver d = service.findById(id);
-        model.addAttribute("vehicle", d);
+        model.addAttribute("driver", d);
 
-        model.addAttribute("pageTitle", "Goat Carpark - " +d.getName());
+        model.addAttribute("pageTitle", "Driver: " +d.getName());
         return "driver/view";
     }
 

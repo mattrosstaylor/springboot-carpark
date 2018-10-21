@@ -1,12 +1,43 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{template.html}">
+<html   lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{template.html}">
 <body>
 
 <div layout:fragment="content">
-    <p>Placeholder</p>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">Date of birth</th>
+                <td th:text="${#dates.format(driver.dateOfBirth, 'dd/MM/yyyy')}"></td>
+            </tr>
+            <tr>
+                <th scope="row">Address</th>
+                <td th:text="${driver.address}"></td>
+            </tr>
+            <tr>
+                <th scope="row">Phone</th>
+                <td th:text="${driver.phoneNumber}"></td>
+            </tr>
+            <tr>
+                <th scope="row">Vehicles</th>
+                <td>
+                    <th:block th:each="vehicle, iterStat : ${driver.vehicles}">
+                        <a th:href="@{'/vehicles/view/' + ${vehicle.id}}">
+                            <th:block th:text="${vehicle.registration}"></th:block>
+                            (<th:block th:text="${vehicle.getType()}"></th:block>)
+                        </a>
+                        <th:block th:if="!${iterStat.last}">, </th:block>
+                    </th:block>
+                    <th:block th:if="${driver.vehicles.size() == 0}">
+                        None registered.
+                    </th:block>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 </body>
