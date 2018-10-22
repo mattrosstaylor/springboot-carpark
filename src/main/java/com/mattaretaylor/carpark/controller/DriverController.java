@@ -47,10 +47,17 @@ public class DriverController {
     @PostMapping("/edit/{id}")
     public String edit(Model model, @ModelAttribute Driver d, @PathVariable Long id, RedirectAttributes ra) {
 
-        //service.save(d);
+        service.save(d);
 
         ra.addAttribute("id", id);
         return "redirect:/drivers/view/{id}";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String delete(Model model, @ModelAttribute Driver d, @PathVariable Long id, RedirectAttributes ra) {
+
+        service.delete(d);
+        return "redirect:/drivers/";
     }
 
 }

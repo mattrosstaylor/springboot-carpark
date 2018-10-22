@@ -25,4 +25,8 @@ public class DriverService {
     public void save(Driver d) {
         repo.save(d);
     }
+
+    public void delete(Driver d) {
+        repo.delete(d);
+    }
 }

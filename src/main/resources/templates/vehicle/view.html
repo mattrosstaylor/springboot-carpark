@@ -33,6 +33,13 @@
             </tr>
         </tbody>
     </table>
+    <div class="button-group" th:object="${vehicle}">
+        <form action="#" th:action="@{'/vehicles/delete/' +${id}}" method="post">
+            <intput type="hidden" id="id" th:value="${id}"></intput>
+            <a class="btn btn-primary" th:href="@{'/vehicles/edit/' + ${id}}">Edit</a>
+            <button type="submit" class="btn btn-secondary">Delete</button>
+        </form>
+    </div>
 </div>
 
 </body>

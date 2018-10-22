@@ -44,15 +44,13 @@ public class VehicleController {
         return "vehicle/edit";
     }
 
-    // is this really necessary?
+    @PostMapping("/delete/{id}")
+    public String delete(Model model, @ModelAttribute Vehicle v, @PathVariable Long id, RedirectAttributes ra) {
 
-
-    @PostMapping("/edit/{id}")
-    public String edit(Model model, @ModelAttribute Vehicle v, @PathVariable Long id, RedirectAttributes ra) {
-
-        service.save(v);
+        service.delete(v);
 
         ra.addAttribute("id", id);
-        return "redirect:/vehicles/view/{id}";
+        return "redirect:/vehicles/";
     }
+
 }

@@ -25,4 +25,6 @@ public class VehicleService {
     public void save(Vehicle v) {
         repo.save(v);
     }
+
+    public void delete(Vehicle v) { repo.delete(v);}
 }
