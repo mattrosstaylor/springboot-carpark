@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html   lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{template.html}">
+<body>
+
+<div layout:fragment="content">
+    <form action="#" th:action="@{'/vehicles/edit/' +${vehicle.id}}" th:object="${vehicle}" method="post">
+        <div class="form-group row">
+            <label for="name">Name</label>
+            <input id="name" class="form-control form-control-lg" type="text" th:field="*{registration}">
+        </div>
+        <div class="form-group row">
+            <label for="type">Type</label>
+            <input id="type" class="form-control form-control" type="text" th:field="*{type}">
+        </div>
+        <div class="form-group row">
+            <label for="model">Model</label>
+            <input id="model" class="form-control form-control-lg" type="text" th:field="*{model}">
+        </div>
+        <div class="form-group row">
+            <label for="colour">Colour</label>
+            <input id="colour" class="form-control form-control-lg" type="text" th:field="*{colour}">
+        </div>
+
+
+        <div class="form-group row">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+
+<!--    <table class="table">
+        <tbody>
+                <th scope="row">Vehicles</th>
+                <td>
+                    <th:block th:each="vehicle, iterStat : ${driver.vehicles}">
+                        <a th:href="@{'/vehicles/view/' + ${vehicle.id}}">
+                            <th:block th:text="${vehicle.registration}"></th:block>
+                            (<th:block th:text="${vehicle.getType()}"></th:block>)
+                        </a>
+                        <th:block th:if="!${iterStat.last}">, </th:block>
+                    </th:block>
+                    <th:block th:if="${driver.vehicles.size() == 0}">
+                        None registered.
+                    </th:block>
+                </td>
+            </tr>
+        </tbody>
+    </table> -->
+</div>
+
+</body>
+</html>

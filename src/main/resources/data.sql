@@ -4,11 +4,11 @@ insert into driver (name, address, phone_number, date_of_birth) values
   ("Annie Xu", "Henan, China", "0525 962541", str_to_date("October 28 2017", "%M %d %Y"))
 ;
 
-insert into vehicle(dtype, registration, colour, model) values
-  ("car", "E4FA76", "Black", "Mini Cooper"),
-  ("bus", "B1PO22", "White", "Lancia Spuddy"),
-  ("motorcycle", "J9NT05", "Red", "Toyota 9000"),
-  ("car", "X3TE12", "Yellow", "Lamborghini Diablo")
+insert into vehicle(type, registration, colour, model) values
+  ("Car", "E4FA76", "Black", "Mini Cooper"),
+  ("Bus", "B1PO22", "White", "Lancia Spuddy"),
+  ("Motorcycle", "J9NT05", "Red", "Toyota 9000"),
+  ("Car", "X3TE12", "Yellow", "Lamborghini Diablo")
 ;
 
 insert into driver_vehicle(driver_id, vehicle_id) values

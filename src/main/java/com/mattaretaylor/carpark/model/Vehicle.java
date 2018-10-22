@@ -7,8 +7,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class Vehicle {
+public class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +16,7 @@ public abstract class Vehicle {
     private String registration;
     private String model;
     private String colour;
+    private String type;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -27,6 +27,4 @@ public abstract class Vehicle {
 
     @OneToOne(mappedBy = "vehicle")
     private Space space;
-
-    public abstract String getType();
 }

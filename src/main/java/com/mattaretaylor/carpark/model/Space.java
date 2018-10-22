@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Space {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

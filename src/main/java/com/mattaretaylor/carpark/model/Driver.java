@@ -1,6 +1,7 @@
 package com.mattaretaylor.carpark.model;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,6 +18,8 @@ public class Driver {
     private String name;
     private String phoneNumber;
     private String address;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
     @ManyToMany(fetch = FetchType.LAZY)

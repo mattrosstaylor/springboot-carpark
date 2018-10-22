@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @Service
 public class VehicleService {
+
     @Autowired
     private VehicleRepository repo;
 
@@ -16,9 +17,12 @@ public class VehicleService {
         return repo.findAll();
     }
 
-    public Vehicle findById(Long id) {
+    public Vehicle getById(Long id) {
         Optional<Vehicle> v = repo.findById(id);
         return (v.isPresent()) ? v.get() : null;
     }
 
+    public void save(Vehicle v) {
+        repo.save(v);
+    }
 }

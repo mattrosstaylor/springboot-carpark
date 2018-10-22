@@ -17,8 +17,12 @@ public class DriverService {
         return repo.findAll();
     }
 
-    public Driver findById(Long id) {
+    public Driver getById(Long id) {
         Optional<Driver> d = repo.findById(id);
         return (d.isPresent()) ? d.get() : null;
+    }
+
+    public void save(Driver d) {
+        repo.save(d);
     }
 }
