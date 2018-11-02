@@ -52,5 +52,4 @@ public class VehicleController {
         ra.addAttribute("id", id);
         return "redirect:/vehicles/";
     }
-
 }
