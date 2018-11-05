@@ -1,6 +1,7 @@
 package com.mattaretaylor.carpark.controller;
 
 import com.mattaretaylor.carpark.model.Vehicle;
+import com.mattaretaylor.carpark.repository.VehicleTypeRepository;
 import com.mattaretaylor.carpark.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,9 @@ public class VehicleController {
 
     @Autowired
     private VehicleService service;
+
+    @Autowired
+    private VehicleTypeRepository vehicleTypes;
 
     @RequestMapping("/")
     public String index(Model model){
@@ -29,7 +33,7 @@ public class VehicleController {
         Vehicle v = service.getById(id);
         model.addAttribute("vehicle", v);
 
-        model.addAttribute("pageTitle", v.getType() +": "+v.getRegistration());
+        model.addAttribute("pageTitle", v.getType().getName() +": "+v.getRegistration());
         return "vehicle/view";
     }
 
@@ -39,14 +43,26 @@ public class VehicleController {
 
         Vehicle v = service.getById(id);
         model.addAttribute("vehicle", v);
+        model.addAttribute("vehicleTypes", vehicleTypes.findAll());
 
         model.addAttribute("pageTitle", "Edit Vehicle " +id);
         return "vehicle/edit";
     }
 
+    @PostMapping("/edit/{id}")
+    public String edit(Model model, RedirectAttributes ra, @ModelAttribute Vehicle v, @PathVariable Long id) {
+
+        service.save(v);
+
+        ra.addAttribute("id", id);
+        return "redirect:/vehicles/view/{id}";
+    }
+
     @GetMapping("add")
     public String add(Model model) {
+        model.addAttribute("vehicleTypes", vehicleTypes.findAll());
         model.addAttribute("pageTitle", "Add new Vehicle");
+        model.addAttribute("vehicle", new Vehicle());
         return "vehicle/add";
     }
 

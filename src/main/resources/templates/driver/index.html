@@ -23,7 +23,7 @@
                     <th:block th:each="vehicle, iterStat : ${driver.vehicles}">
                         <a th:href="@{'/vehicles/view/' + ${vehicle.id}}">
                             <th:block th:text="${vehicle.registration}"></th:block>
-                            (<th:block th:text="${vehicle.getType()}"></th:block>)
+                            (<th:block th:text="${vehicle.type.name}"></th:block>)
                         </a>
                         <th:block th:if="!${iterStat.last}">, </th:block>
                     </th:block>

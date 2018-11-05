@@ -7,22 +7,29 @@
 <body>
 
 <div layout:fragment="content">
-    <form action="#" th:action="@{'/vehicles/add'}" method="post">
+    <form action="#" th:action="@{'/vehicles/add'}" th:object="${vehicle}" method="post">
         <div class="form-group row">
             <label for="registration">Registration</label>
-            <input id="registration" name="registration" class="form-control form-control-lg" type="text">
+            <input id="registration" class="form-control form-control-lg" type="text" th:field="*{registration}">
         </div>
         <div class="form-group row">
             <label for="type">Type</label>
-            <input id="type" name="type" class="form-control" type="text">
+            <div id="type" class="form-control form-control-lg">
+                <th:block th:each="typeList: ${vehicleTypes}">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" th:field="*{type}" th:value="${typeList.id}" />
+                        <label class="form-check-label" th:text="${typeList.name}"></label>
+                    </div>
+                </th:block>
+            </div>
         </div>
         <div class="form-group row">
             <label for="model">Model</label>
-            <input id="model" name="model" class="form-control" type="text">
+            <input id="model" class="form-control form-control-lg" type="text" th:field="*{model}">
         </div>
         <div class="form-group row">
             <label for="colour">Colour</label>
-            <input id="colour" name="colour" class="form-control" type="text">
+            <input id="colour" class="form-control form-control-lg" type="text" th:field="*{colour}">
         </div>
 
 

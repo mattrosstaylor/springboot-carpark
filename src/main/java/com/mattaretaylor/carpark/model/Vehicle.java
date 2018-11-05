@@ -16,7 +16,9 @@ public class Vehicle {
     private String registration;
     private String model;
     private String colour;
-    private String type;
+
+    @OneToOne
+    private VehicleType type;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

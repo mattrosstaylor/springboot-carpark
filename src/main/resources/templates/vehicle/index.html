@@ -20,7 +20,7 @@
                 <th scope="row">
                     <a th:href="@{'/vehicles/view/' + ${vehicle.id}}" th:text="${vehicle.registration}"></a>
                 </th>
-                <td th:text="${vehicle.getType()}"></td>
+                <td th:text="${vehicle.type.name}"></td>
                 <td>
                     <th:block th:each="driver, iterStat : ${vehicle.drivers}">
                         <a th:href="@{'/drivers/view/' + ${driver.id}}">
