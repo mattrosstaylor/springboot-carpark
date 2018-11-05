@@ -44,8 +44,20 @@ public class VehicleController {
         return "vehicle/edit";
     }
 
+    @GetMapping("add")
+    public String add(Model model) {
+        model.addAttribute("pageTitle", "Add new Vehicle");
+        return "vehicle/add";
+    }
+
+    @PostMapping("add")
+    public String add(RedirectAttributes ra, Vehicle v) {
+        service.save(v);
+        return "redirect:/vehicles/";
+    }
+
     @PostMapping("/delete/{id}")
-    public String delete(Model model, @ModelAttribute Vehicle v, @PathVariable Long id, RedirectAttributes ra) {
+    public String delete(RedirectAttributes ra, @ModelAttribute Vehicle v, @PathVariable Long id) {
 
         service.delete(v);
 

@@ -35,7 +35,7 @@
     </table>
     <div class="button-group">
         <form action="#" th:action="@{'/vehicles/delete/' +${vehicle.id}}" method="post">
-            <intput type="hidden" id="id" th:value="${vehicle.id}"></intput>
+            <input type="hidden" id="id" th:value="${vehicle.id}"></input>
             <a class="btn btn-primary" th:href="@{'/vehicles/edit/' + ${vehicle.id}}">Edit</a>
             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#deleteModal">Delete</button>
 
@@ -43,7 +43,9 @@
             <div id="deleteModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header"><h4 class="modal-title">Really delete <strong>[[${vehicle.registration}]]</strong>?</h4></div>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Really delete <strong>[[${vehicle.registration}]]</strong>?</h4>
+                        </div>
                         <div class="modal-body">
                             <p>This operation cannot be undone.</p>
                         </div>

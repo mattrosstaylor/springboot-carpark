@@ -45,7 +45,7 @@ public class DriverController {
     }
 
     @PostMapping("/edit/{id}")
-    public String edit(Model model, @ModelAttribute Driver d, @PathVariable Long id, RedirectAttributes ra) {
+    public String edit(Model model, RedirectAttributes ra, @ModelAttribute Driver d, @PathVariable Long id) {
 
         service.save(d);
 
@@ -53,8 +53,20 @@ public class DriverController {
         return "redirect:/drivers/view/{id}";
     }
 
+    @GetMapping("add")
+    public String add(Model model) {
+        model.addAttribute("pageTitle", "Add new Driver");
+        return "driver/add";
+    }
+
+    @PostMapping("add")
+    public String add(RedirectAttributes ra, Driver d) {
+        service.save(d);
+        return "redirect:/drivers/";
+    }
+
     @PostMapping("/delete/{id}")
-    public String delete(Model model, @ModelAttribute Driver d, @PathVariable Long id, RedirectAttributes ra) {
+    public String delete(Model model, RedirectAttributes ra, @ModelAttribute Driver d, @PathVariable Long id) {
 
         service.delete(d);
         return "redirect:/drivers/";
